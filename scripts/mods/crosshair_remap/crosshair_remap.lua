@@ -3,8 +3,8 @@ local mod = get_mod("crosshair_remap")
 mod.mapping = {}
 
 local function collect_settings()
-    for _, name in ipairs(mod.vanilla_names) do
-        mod.mapping[name] = mod:get(name .. "_setting")
+    for _, name in ipairs(mod.vanilla_crosshair_names) do
+        mod.mapping[name] = mod:get(name .. "_crosshair")
     end
 end
 
@@ -23,7 +23,7 @@ end)
 
 mod:hook_safe("HudElementCrosshair", "init", function(self, ...)
     local scenegraph_id = "pivot"
-    for _, name in ipairs(mod.custom_names) do
+    for _, name in ipairs(mod.custom_crosshair_names) do
         local template = Mods.file.dofile(mod.custom_dir .. name)
         template.name = name
         self._crosshair_templates[name] = template
