@@ -21,7 +21,6 @@ local function make_widgets()
 			options = make_options()
 		}
 	end
-	mod:dump(widgets, "widgets", 100)
 	return widgets
 end
 
