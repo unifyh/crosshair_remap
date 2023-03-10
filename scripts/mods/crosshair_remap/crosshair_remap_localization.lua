@@ -84,6 +84,86 @@ local locres = {
 		en = "None",
 		["zh-cn"] = "无准星",
 	},
+
+	none_class = {
+		en = "When No Crosshair",
+	},
+	melee_class = {
+		en = "Melee Weapons and Actions",
+	},
+	autogun_infantry_class = {
+		en = "Autoguns (Infantry)",
+	},
+	autogun_braced_class = {
+		en = "Autoguns (Braced)",
+	},
+	autogun_headhunter_class = {
+		en = "Autoguns (Headhunter)",
+	},
+	autopistol_class = {
+		en = "Autopistols",
+	},
+	boltgun_class = {
+		en = "Boltguns",
+	},
+	flamer_class = {
+		en = "Flamers",
+	},
+	force_staff_trauma_class = {
+		en = "Force Staves (Trauma)",
+	},
+	force_staff_purgatus_class = {
+		en = "Force Staves (Purgatus)",
+	},
+	force_staff_surge_class = {
+		en = "Force Staves (Surge)",
+	},
+	force_staff_voidstrike_class = {
+		en = "Force Staves (Voidstrike)",
+	},
+	lasgun_infantry_class = {
+		en = "Lasguns (Infantry)",
+	},
+	lasgun_helbore_class = {
+		en = "Lasguns (Helbore)",
+	},
+	lasgun_recon_class = {
+		en = "Lasguns (Recon)",
+	},
+	laspistol_class = {
+		en = "Laspistols",
+	},
+	plasma_gun_class = {
+		en = "Plasma Guns",
+	},
+	revolver_class = {
+		en = "Stub Revolvers",
+	},
+	shotgun_class = {
+		en = "Shotguns",
+	},
+	grenadier_gauntlet_class = {
+		en = "Grenadier Gauntlets",
+	},
+	heavy_stubber_class = {
+		en = "Heavy Stubbers",
+	},
+	ripper_gun_class = {
+		en = "Ripper Guns",
+	},
+	kickback_class = {
+		en = "Kickbacks",
+	},
+	rumbler_class = {
+		en = "Rumblers",
+	},
+
+	primary = {
+		en = "Primary Action",
+	},
+	secondary = {
+		en = "Secondary Action",
+	}
 }
 
 for _, name in ipairs(mod.custom_crosshair_names) do
