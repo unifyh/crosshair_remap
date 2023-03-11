@@ -178,3 +178,28 @@ mod:hook_safe("HudElementCrosshair", "init", function(self, ...)
 		self._crosshair_widget_definitions[name] = template:create_widget_defintion(scenegraph_id)
     end
 end)
+
+-- Provide default spread for melee weapons.
+mod:hook("HudElementCrosshair", "_spread_yaw_pitch", function(func, self)
+    local yaw, pitch = func(self)
+    
+    local parent = self._parent
+	local player_extensions = parent:player_extensions()
+
+    if player_extensions then
+		local unit_data_extension = player_extensions.unit_data
+		local weapon_action_component = unit_data_extension and unit_data_extension:read_component("weapon_action")
+
+		if weapon_action_component then
+			local weapon_template = WeaponTemplate.current_weapon_template(weapon_action_component)
+
+            if weapon_template then
+                if WeaponTemplate.is_melee(weapon_template) then
+                    return 4, 4
+                end
+            end
+        end
+    end
+
+    return yaw, pitch
+end)
