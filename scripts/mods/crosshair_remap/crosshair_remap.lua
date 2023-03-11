@@ -3,21 +3,19 @@ local mod = get_mod("crosshair_remap")
 local Action = require("scripts/utilities/weapon/action")
 local WeaponTemplate = require("scripts/utilities/weapon/weapon_template")
 
--- mod.mapping = {}
+local function collect_settings()
+    for k, _ in pairs(mod.settings) do
+        mod.settings[k] = mod:get(k)
+    end
+end
 
--- local function collect_settings()
---     for _, name in ipairs(mod.vanilla_crosshair_names) do
---         mod.mapping[name] = mod:get(name .. "_crosshair")
---     end
--- end
+mod.on_enabled = function()
+    collect_settings()
+end
 
--- mod.on_enabled = function()
---     collect_settings()
--- end
-
--- mod.on_setting_changed = function()
---     collect_settings()
--- end
+mod.on_setting_changed = function()
+    collect_settings()
+end
 
 local keywords_to_class = {
     autogun = {
@@ -87,7 +85,7 @@ end
 
 local function retrieve_ranged_weapon_setting(weapon_class, in_alt_fire)
     local suffix = in_alt_fire and "_secondary" or "_primary"
-    return mod:get(weapon_class .. suffix)
+    return mod.settings[weapon_class .. suffix]
 end
 
 local melee_action_kinds = {
@@ -135,16 +133,16 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
                 end
             
                 if WeaponTemplate.is_melee(weapon_template) then
-                    return mod:get("melee_class")
+                    return mod.settings["melee_class"]
                 end
                 
                 if WeaponTemplate.is_ranged(weapon_template) then
                     if melee_action_kinds[action_kind] then
-                        return mod:get("melee_class")
+                        return mod.settings["melee_class"]
                     end
             
                     if reload_action_kinds[action_kind] then
-                        return mod:get("none_class")
+                        return mod.settings["none_class"]
                     end
             
                     local weapon_class = determine_ranged_weapon_class(weapon_template)
@@ -164,7 +162,7 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
 	end
 
     if not crosshair_type or crosshair_type == "none" then
-        return mod:get("none_class")
+        return mod.settings["none_class"]
     else
 	    return crosshair_type
     end

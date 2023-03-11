@@ -1,5 +1,7 @@
 local mod = get_mod("crosshair_remap")
 
+mod.settings = {}
+
 local function make_options()
 	local options = {}
 	for i, name in ipairs(mod.all_crosshair_names) do
@@ -12,6 +14,7 @@ local function make_options()
 end
 
 local function make_dropdown(name, default, title)
+	mod.settings[name] = default
 	return {
 		setting_id = name,
 		title = title,
