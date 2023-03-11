@@ -87,82 +87,108 @@ local locres = {
 
 	none_class = {
 		en = "When No Crosshair",
+		["zh-cn"] = "无准星时",
 	},
 	melee_class = {
 		en = "Melee Weapons and Actions",
+		["zh-cn"] = "近战武器和动作",
 	},
 	autogun_infantry_class = {
 		en = "Autoguns (Infantry)",
+		["zh-cn"] = "自动枪（步兵）",
 	},
 	autogun_braced_class = {
 		en = "Autoguns (Braced)",
+		["zh-cn"] = "自动枪（稳固）",
 	},
 	autogun_headhunter_class = {
 		en = "Autoguns (Headhunter)",
+		["zh-cn"] = "自动枪（猎颅者）",
 	},
 	autopistol_class = {
 		en = "Autopistols",
+		["zh-cn"] = "自动手枪",
 	},
 	boltgun_class = {
 		en = "Boltguns",
+		["zh-cn"] = "爆矢枪",
 	},
 	flamer_class = {
 		en = "Flamers",
+		["zh-cn"] = "火焰喷射器",
 	},
 	force_staff_trauma_class = {
 		en = "Force Staves (Trauma)",
+		["zh-cn"] = "力场杖（创伤）",
 	},
 	force_staff_purgatus_class = {
 		en = "Force Staves (Purgatus)",
+		["zh-cn"] = "力场杖（净化）",
 	},
 	force_staff_surge_class = {
 		en = "Force Staves (Surge)",
+		["zh-cn"] = "力场杖（激涌）",
 	},
 	force_staff_voidstrike_class = {
 		en = "Force Staves (Voidstrike)",
+		["zh-cn"] = "力场杖（虚空打击）",
 	},
 	lasgun_infantry_class = {
 		en = "Lasguns (Infantry)",
+		["zh-cn"] = "激光枪（步兵）",
 	},
 	lasgun_helbore_class = {
 		en = "Lasguns (Helbore)",
+		["zh-cn"] = "激光枪（地狱钻）",
 	},
 	lasgun_recon_class = {
 		en = "Lasguns (Recon)",
+		["zh-cn"] = "激光枪（侦查）",
 	},
 	laspistol_class = {
 		en = "Laspistols",
+		["zh-cn"] = "激光手枪",
 	},
 	plasma_gun_class = {
 		en = "Plasma Guns",
+		["zh-cn"] = "等离子枪",
 	},
 	revolver_class = {
 		en = "Stub Revolvers",
+		["zh-cn"] = "速发左轮枪",
 	},
 	shotgun_class = {
 		en = "Shotguns",
+		["zh-cn"] = "霰弹枪",
 	},
 	grenadier_gauntlet_class = {
 		en = "Grenadier Gauntlets",
+		["zh-cn"] = "掷弹兵臂铠",
 	},
 	heavy_stubber_class = {
 		en = "Heavy Stubbers",
+		["zh-cn"] = "重机枪",
 	},
 	ripper_gun_class = {
 		en = "Ripper Guns",
+		["zh-cn"] = "开膛枪",
 	},
 	kickback_class = {
 		en = "Kickbacks",
+		["zh-cn"] = "击退者",
 	},
 	rumbler_class = {
 		en = "Rumblers",
+		["zh-cn"] = "低吼者",
 	},
 
 	primary = {
 		en = "Primary Action",
+		["zh-cn"] = "主要动作",
 	},
 	secondary = {
 		en = "Secondary Action",
+		["zh-cn"] = "次要动作",
 	}
 }
 
