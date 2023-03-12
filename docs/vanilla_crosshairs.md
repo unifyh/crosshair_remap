@@ -87,3 +87,5 @@ Examples: braced autoguns, Ogryn MG
 
 ## - `none`
 Nothing, usually used when reloading. Technically not a crosshair style.
+
+This disables hitmarkers. Use `ironsight` if you want to keep them.
