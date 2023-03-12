@@ -90,7 +90,7 @@ end
 
 local function is_in_hub()
     if Managers and Managers.state and Managers.state.game_mode then
-        return Managers.state.game_mode:game_mode_name() == "hun"
+        return Managers.state.game_mode:game_mode_name() == "hub"
     end
     return false
 end
