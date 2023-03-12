@@ -195,7 +195,7 @@ mod:hook("HudElementCrosshair", "_spread_yaw_pitch", function(func, self)
 
             if weapon_template then
                 if WeaponTemplate.is_melee(weapon_template) then
-                    return 4, 4
+                    return 2, 2
                 end
             end
         end
