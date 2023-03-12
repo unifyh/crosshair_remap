@@ -88,6 +88,13 @@ local function retrieve_ranged_weapon_setting(weapon_class, in_alt_fire)
     return mod.settings[weapon_class .. suffix]
 end
 
+local function is_in_hub()
+    if Managers and Managers.state and Managers.state.game_mode then
+        return Managers.state.game_mode:game_mode_name() == "hun"
+    end
+    return false
+end
+
 local melee_action_kinds = {
     windup = true,
     sweep = true,
@@ -111,6 +118,10 @@ local altfire_action_kinds = {
 }
 
 mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(self)
+    if is_in_hub() then
+        return "none"
+    end
+
 	local crosshair_type = nil
 	local parent = self._parent
 	local player_extensions = parent:player_extensions()
