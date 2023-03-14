@@ -115,6 +115,7 @@ local altfire_action_kinds = {
     overload_charge = true,
     overload_charge_target_finder = true,
     overload_charge_position_finder = true,
+    flamer_gas = true,
 }
 
 mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(self)
