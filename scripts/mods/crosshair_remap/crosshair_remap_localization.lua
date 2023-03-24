@@ -80,11 +80,11 @@ local locres = {
 	},
 	shotgun_slug_crosshair = {
 		en = "Shotgun Slug",
-		-- ["zh-cn"] = "霰弹",
+		["zh-cn"] = "独头霰弹",
 	},
 	shotgun_wide_crosshair = {
 		en = "Shotgun Wide",
-		-- ["zh-cn"] = "霰弹",
+		["zh-cn"] = "宽散布霰弹",
 	},
 	spray_n_pray_crosshair = {
 		en = "Spray-n-Pray",
@@ -167,13 +167,9 @@ local locres = {
 		en = "Stub Revolvers",
 		["zh-cn"] = "速发左轮枪",
 	},
-	-- shotgun_class = {
-	-- 	en = "Shotguns",
-	-- 	["zh-cn"] = "霰弹枪",
-	-- },
 	shotgun_lawbringer_class = {
 		en = "Shotguns (Lawbringer)",
-		-- ["zh-cn"] = "霰弹枪（）",
+		["zh-cn"] = "霰弹枪（执法者）",
 	},
 	shotgun_agripinaa_class = {
 		en = "Shotguns (Agripinaa)",
@@ -214,7 +210,7 @@ local locres = {
 	},
 	special = {
 		en = "Special Action",
-		--
+		["zh-cn"] = "特殊动作",
 	},
 }
 
