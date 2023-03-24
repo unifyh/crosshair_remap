@@ -77,6 +77,12 @@ Four corners.
 
 Examples: shotguns
 
+## - `shotgun_slug`
+Almost the same as `cross`.
+
+## - `shotgun_wide`
+`shotgun` but wider.
+
 ## - `spray_n_pray`
 Two angle brackets and a center dot.
 ```

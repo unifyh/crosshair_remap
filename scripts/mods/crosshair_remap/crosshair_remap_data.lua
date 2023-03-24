@@ -24,13 +24,16 @@ local function make_dropdown(name, default, title)
 	}
 end
 
-local function make_group(name, default1, default2)
+local function make_group(name, default1, default2, default3)
 	local widgets = {}
 	if default1 then
 		widgets[#widgets+1] = make_dropdown(name .. "_primary", default1, "primary")
 	end
 	if default2 then
 		widgets[#widgets+1] = make_dropdown(name .. "_secondary", default2, "secondary")
+	end
+	if default3 then
+		widgets[#widgets+1] = make_dropdown(name .. "_special", default3, "special")
 	end
 	return {
 		setting_id = name,
@@ -63,7 +66,9 @@ return {
 			make_group("laspistol_class", "assault", "ironsight"),
 			make_group("plasma_gun_class", "bfg", "bfg"),
 			make_group("revolver_class", "bfg", "ironsight"),
-			make_group("shotgun_class", "shotgun", "ironsight"),
+			make_group("shotgun_lawbringer_class", "shotgun", "ironsight", "shotgun_wide"),
+			make_group("shotgun_agripinaa_class", "shotgun", "ironsight", "shotgun_slug"),
+			make_group("shotgun_kantrael_class", "shotgun", "ironsight", "shotgun"),
 			make_group("grenadier_gauntlet_class", "dot", "projectile_drop"),
 			make_group("heavy_stubber_class", "spray_n_pray", "spray_n_pray"),
 			make_group("ripper_gun_class", "shotgun", "spray_n_pray"),

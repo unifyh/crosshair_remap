@@ -2,6 +2,8 @@ local mod = get_mod("crosshair_remap")
 
 local Action = require("scripts/utilities/weapon/action")
 local WeaponTemplate = require("scripts/utilities/weapon/weapon_template")
+local PlayerCharacterConstants = require("scripts/settings/player_character/player_character_constants")
+local slot_configuration = PlayerCharacterConstants.slot_configuration
 
 local function collect_settings()
     for k, _ in pairs(mod.settings) do
@@ -42,7 +44,7 @@ local keywords_to_class = {
     laspistol = "laspistol_class",
     plasma_rifle = "plasma_gun_class",
     stub_pistol = "revolver_class",
-    shotgun = "shotgun_class",
+    shotgun = "shotguns",
     grenadier_gauntlet = "grenadier_gauntlet_class",
     heavystubber = "heavy_stubber_class",
     rippergun = "ripper_gun_class",
@@ -78,13 +80,24 @@ local function determine_ranged_weapon_class(weapon_template)
         weapon_class = weapon_template.crosshair_type == "shotgun" and "kickback_class" or "rumbler_class"
     elseif weapon_class == "lasgun_infantry_or_helbore" then
         weapon_class = weapon_template.crosshair_type == "bfg" and "lasgun_helbore_class" or "lasgun_infantry_class"
+    elseif weapon_class == "shotguns" then
+        if weapon_template.crosshair_type_special_active == "shotgun_wide" then
+            weapon_class = "shotgun_lawbringer_class"
+        elseif weapon_template.crosshair_type_special_active == "shotgun_slug" then
+            weapon_class = "shotgun_agripinaa_class"
+        else
+            weapon_class = "shotgun_kantrael_class"
+        end
     end
 
     return weapon_class
 end
 
-local function retrieve_ranged_weapon_setting(weapon_class, in_alt_fire)
+local function retrieve_ranged_weapon_setting(weapon_class, in_alt_fire, in_special)
     local suffix = in_alt_fire and "_secondary" or "_primary"
+    if in_special and not in_alt_fire then
+        suffix = "_special"
+    end
     return mod.settings[weapon_class .. suffix]
 end
 
@@ -118,12 +131,17 @@ local altfire_action_kinds = {
     flamer_gas = true,
 }
 
-mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(self)
+function string.startswith(str,start)
+    return string.sub(str, 1, string.len(start)) == start
+end
+
+mod:hook("HudElementCrosshair", "_get_current_crosshair_type", function(func, self)
+    local vanilla = func(self)
+
     if is_in_hub() then
         return "none"
     end
 
-	local crosshair_type = nil
 	local parent = self._parent
 	local player_extensions = parent:player_extensions()
 
@@ -159,25 +177,26 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
             
                     local weapon_class = determine_ranged_weapon_class(weapon_template)
                     local in_alt_fire = altfire_action_kinds[action_kind] or alternate_fire_component.is_active
-                    return retrieve_ranged_weapon_setting(weapon_class, in_alt_fire)
+
+                    if string.startswith(weapon_class, "shotgun_") then
+                        local inventory_comp = unit_data_extension:read_component("inventory")
+                        local wielded_slot = inventory_comp.wielded_slot
+                        local slot_type = slot_configuration[wielded_slot].slot_type
+                        local in_special = false
+                        if slot_type == "weapon" then
+                            local inventory_slot_component = unit_data_extension:read_component(wielded_slot)
+                            in_special = inventory_slot_component.special_active
+                        end
+                        return retrieve_ranged_weapon_setting(weapon_class, in_alt_fire, in_special)
+                    else
+                        return retrieve_ranged_weapon_setting(weapon_class, in_alt_fire)
+                    end
                 end
-
-                if current_action_name ~= "none" then
-					crosshair_type = action_settings.crosshair_type
-				elseif alternate_fire_component.is_active and alternate_fire_settings and alternate_fire_settings.crosshair_type then
-					crosshair_type = alternate_fire_settings.crosshair_type
-				end
-
-				crosshair_type = crosshair_type or weapon_template.crosshair_type
 			end
 		end
 	end
 
-    if not crosshair_type or crosshair_type == "none" then
-        return mod.settings["none_class"]
-    else
-	    return crosshair_type
-    end
+    return vanilla == "none" and mod.settings["none_class"] or vanilla
 end)
 
 -- Inject custom crosshairs.

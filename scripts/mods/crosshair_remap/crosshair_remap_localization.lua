@@ -12,6 +12,8 @@ mod.vanilla_crosshair_names = {
 	"ironsight",
 	"projectile_drop",
 	"shotgun",
+	"shotgun_slug",
+	"shotgun_wide",
 	"spray_n_pray",
 	"none",
 }
@@ -75,6 +77,14 @@ local locres = {
 	shotgun_crosshair = {
 		en = "Shotgun",
 		["zh-cn"] = "霰弹",
+	},
+	shotgun_slug_crosshair = {
+		en = "Shotgun Slug",
+		["zh-cn"] = "独头霰弹",
+	},
+	shotgun_wide_crosshair = {
+		en = "Shotgun Wide",
+		["zh-cn"] = "宽散布霰弹",
 	},
 	spray_n_pray_crosshair = {
 		en = "Spray-n-Pray",
@@ -157,9 +167,17 @@ local locres = {
 		en = "Stub Revolvers",
 		["zh-cn"] = "速发左轮枪",
 	},
-	shotgun_class = {
-		en = "Shotguns",
-		["zh-cn"] = "霰弹枪",
+	shotgun_lawbringer_class = {
+		en = "Shotguns (Lawbringer)",
+		["zh-cn"] = "霰弹枪（执法者）",
+	},
+	shotgun_agripinaa_class = {
+		en = "Shotguns (Agripinaa)",
+		["zh-cn"] = "霰弹枪（阿格里皮娜）",
+	},
+	shotgun_kantrael_class = {
+		en = "Shotguns (Kantrael)",
+		["zh-cn"] = "霰弹枪（卡特雷尔）",
 	},
 	grenadier_gauntlet_class = {
 		en = "Grenadier Gauntlets",
@@ -189,7 +207,11 @@ local locres = {
 	secondary = {
 		en = "Secondary Action",
 		["zh-cn"] = "次要动作",
-	}
+	},
+	special = {
+		en = "Special Action",
+		["zh-cn"] = "特殊动作",
+	},
 }
 
 for _, name in ipairs(mod.custom_crosshair_names) do
