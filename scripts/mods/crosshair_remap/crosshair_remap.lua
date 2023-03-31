@@ -135,13 +135,12 @@ function string.startswith(str,start)
     return string.sub(str, 1, string.len(start)) == start
 end
 
-mod:hook("HudElementCrosshair", "_get_current_crosshair_type", function(func, self)
-    local vanilla = func(self)
-
+mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(self)
     if is_in_hub() then
         return "none"
     end
 
+    local crosshair_type = nil
 	local parent = self._parent
 	local player_extensions = parent:player_extensions()
 
@@ -192,11 +191,19 @@ mod:hook("HudElementCrosshair", "_get_current_crosshair_type", function(func, se
                         return retrieve_ranged_weapon_setting(weapon_class, in_alt_fire)
                     end
                 end
+
+                if action_settings then
+					crosshair_type = action_settings.crosshair_type
+				elseif alternate_fire_component.is_active and alternate_fire_settings and alternate_fire_settings.crosshair_type then
+					crosshair_type = alternate_fire_settings.crosshair_type
+				end
+
+                crosshair_type = crosshair_type or weapon_template.crosshair_type
 			end
 		end
 	end
 
-    return vanilla == "none" and mod.settings["none_class"] or vanilla
+    return crosshair_type == "none" and mod.settings["none_class"] or crosshair_type
 end)
 
 -- Inject custom crosshairs.
