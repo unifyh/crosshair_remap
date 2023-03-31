@@ -153,7 +153,7 @@ local locres = {
 	},
 	lasgun_recon_class = {
 		en = "Lasguns (Recon)",
-		["zh-cn"] = "激光枪（侦查）",
+		["zh-cn"] = "激光枪（侦察）",
 	},
 	laspistol_class = {
 		en = "Laspistols",
