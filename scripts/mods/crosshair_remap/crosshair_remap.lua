@@ -203,6 +203,7 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
         end
     end
 
+    crosshair_type = crosshair_type or "none"
     return crosshair_type == "none" and mod.settings["none_class"] or crosshair_type
 end)
 
