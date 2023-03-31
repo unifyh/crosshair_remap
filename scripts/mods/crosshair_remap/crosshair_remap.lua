@@ -141,20 +141,20 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
     end
 
     local crosshair_type = nil
-	local parent = self._parent
-	local player_extensions = parent:player_extensions()
+    local parent = self._parent
+    local player_extensions = parent:player_extensions()
 
-	if player_extensions then
-		local unit_data_extension = player_extensions.unit_data
-		local weapon_action_component = unit_data_extension and unit_data_extension:read_component("weapon_action")
+    if player_extensions then
+        local unit_data_extension = player_extensions.unit_data
+        local weapon_action_component = unit_data_extension and unit_data_extension:read_component("weapon_action")
 
-		if weapon_action_component then
-			local weapon_template = WeaponTemplate.current_weapon_template(weapon_action_component)
+        if weapon_action_component then
+            local weapon_template = WeaponTemplate.current_weapon_template(weapon_action_component)
 
-			if weapon_template then
-				local current_action_name, action_settings = Action.current_action(weapon_action_component, weapon_template)
-				local alternate_fire_component = unit_data_extension:read_component("alternate_fire")
-				local alternate_fire_settings = weapon_template.alternate_fire_settings
+            if weapon_template then
+                local current_action_name, action_settings = Action.current_action(weapon_action_component, weapon_template)
+                local alternate_fire_component = unit_data_extension:read_component("alternate_fire")
+                local alternate_fire_settings = weapon_template.alternate_fire_settings
                 local action_kind = current_action_name ~= "none" and action_settings.kind or "no_action"
 
                 if action_kind == "inspect" then
@@ -193,15 +193,15 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
                 end
 
                 if action_settings then
-					crosshair_type = action_settings.crosshair_type
-				elseif alternate_fire_component.is_active and alternate_fire_settings and alternate_fire_settings.crosshair_type then
-					crosshair_type = alternate_fire_settings.crosshair_type
-				end
+                    crosshair_type = action_settings.crosshair_type
+                elseif alternate_fire_component.is_active and alternate_fire_settings and alternate_fire_settings.crosshair_type then
+                    crosshair_type = alternate_fire_settings.crosshair_type
+                end
 
                 crosshair_type = crosshair_type or weapon_template.crosshair_type
-			end
-		end
-	end
+            end
+        end
+    end
 
     return crosshair_type == "none" and mod.settings["none_class"] or crosshair_type
 end)
@@ -213,7 +213,7 @@ mod:hook_safe("HudElementCrosshair", "init", function(self, ...)
         local template = Mods.file.dofile(mod.custom_dir .. name)
         template.name = name
         self._crosshair_templates[name] = template
-		self._crosshair_widget_definitions[name] = template:create_widget_defintion(scenegraph_id)
+        self._crosshair_widget_definitions[name] = template:create_widget_defintion(scenegraph_id)
     end
 end)
 
@@ -222,14 +222,14 @@ mod:hook("HudElementCrosshair", "_spread_yaw_pitch", function(func, self)
     local yaw, pitch = func(self)
     
     local parent = self._parent
-	local player_extensions = parent:player_extensions()
+    local player_extensions = parent:player_extensions()
 
     if player_extensions then
-		local unit_data_extension = player_extensions.unit_data
-		local weapon_action_component = unit_data_extension and unit_data_extension:read_component("weapon_action")
+        local unit_data_extension = player_extensions.unit_data
+        local weapon_action_component = unit_data_extension and unit_data_extension:read_component("weapon_action")
 
-		if weapon_action_component then
-			local weapon_template = WeaponTemplate.current_weapon_template(weapon_action_component)
+        if weapon_action_component then
+            local weapon_template = WeaponTemplate.current_weapon_template(weapon_action_component)
 
             if weapon_template then
                 if WeaponTemplate.is_melee(weapon_template) then
