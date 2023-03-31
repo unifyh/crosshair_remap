@@ -5,5 +5,6 @@ return {
     "ironsight_dot",
     "charge_up_ads_chevron",
     "ironsight_chevron",
+    "charge_up_ads_cross",
     -- "my_crosshair_file",
 }
