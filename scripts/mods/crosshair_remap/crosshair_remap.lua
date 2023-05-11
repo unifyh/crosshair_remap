@@ -160,6 +160,10 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
                 if action_kind == "inspect" then
                     return "none"
                 end
+
+                if weapon_template.psyker_smite then
+                    return mod.settings["psyker_bb_class"]
+                end
             
                 if WeaponTemplate.is_melee(weapon_template) then
                     return mod.settings["melee_class"]

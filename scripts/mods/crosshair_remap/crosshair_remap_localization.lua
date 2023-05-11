@@ -103,6 +103,10 @@ local locres = {
         en = "Melee Weapons and Actions",
         ["zh-cn"] = "近战武器和动作",
     },
+    psyker_bb_class = {
+        en = "Psyker Brain Burst",
+        ["zh-cn"] = "灵能者大脑爆裂",
+    },
     autogun_infantry_class = {
         en = "Autoguns (Infantry)",
         ["zh-cn"] = "自动枪（步兵）",
