@@ -392,13 +392,13 @@ template.update_function = function (parent, ui_renderer, widget, template, dt, 
         local charge_right_style = style.charge_right
         local charge_mask_right_style = style.charge_mask_right
         local up_style = style.up
-		up_style.offset[2] = up_style.default_offset[2] - spread_offset_y
-		local down_style = style.down
-		down_style.offset[2] = down_style.default_offset[2] + spread_offset_y
-		local left_style = style.left
-		left_style.offset[1] = left_style.default_offset[1] - spread_offset_x
-		local right_style = style.right
-		right_style.offset[1] = right_style.default_offset[1] + spread_offset_x
+        up_style.offset[2] = up_style.default_offset[2] - spread_offset_y
+        local down_style = style.down
+        down_style.offset[2] = down_style.default_offset[2] + spread_offset_y
+        local left_style = style.left
+        left_style.offset[1] = left_style.default_offset[1] - spread_offset_x
+        local right_style = style.right
+        right_style.offset[1] = right_style.default_offset[1] + spread_offset_x
     end
 
     local mask_height = mask_size[2]
