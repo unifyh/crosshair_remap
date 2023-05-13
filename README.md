@@ -4,11 +4,11 @@ Allows player to map a style of crosshair to another, including custom ones.
 
 ## Mod Behavior
 
-1. No crosshair when inspecting anything.
+1. Crosshair is unchanged when inspecting anything.
 2. Melee weapons will use the ***Melee Weapons and Actions*** setting.
 3. Ranged weapons: 
    1. Melee actions will use the ***Melee Weapons and Actions*** setting.
-   2. Reload actions will use the ***When No Crosshair*** setting.
+   2. Crosshair is unchanged when doing reload actions.
    3. Primary, secondary, and shotgun special actions will use the respective settings.
 4. Others remain unchanged, except when no crosshair is present, at that time the ***When No Crosshair*** setting will be used.
 

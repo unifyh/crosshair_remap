@@ -158,7 +158,7 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
                 local action_kind = current_action_name ~= "none" and action_settings.kind or "no_action"
 
                 if action_kind == "inspect" then
-                    return "none"
+                    goto unchanged
                 end
 
                 if weapon_template.psyker_smite then
@@ -175,7 +175,7 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
                     end
             
                     if reload_action_kinds[action_kind] then
-                        return mod.settings["none_class"]
+                        goto unchanged
                     end
             
                     local weapon_class = determine_ranged_weapon_class(weapon_template)
@@ -196,6 +196,7 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
                     end
                 end
 
+                ::unchanged::
                 if action_settings then
                     crosshair_type = action_settings.crosshair_type
                 elseif alternate_fire_component.is_active and alternate_fire_settings and alternate_fire_settings.crosshair_type then
