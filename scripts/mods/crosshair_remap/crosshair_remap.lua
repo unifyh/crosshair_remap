@@ -35,10 +35,8 @@ local keywords_to_class = {
         p4 = "force_staff_voidstrike_class",
     },
     lasgun = {
-        -- p1 = "lasgun_infantry_class",
-        -- p2 = "lasgun_helbore_class",
-        -- Bug by FS: all Helbores are mistagged p1.
-        p1 = "lasgun_infantry_or_helbore",
+        p1 = "lasgun_infantry_class",
+        p2 = "lasgun_helbore_class",
         p3 = "lasgun_recon_class",
     },
     laspistol = "laspistol_class",
@@ -78,8 +76,6 @@ local function determine_ranged_weapon_class(weapon_template)
 
     if weapon_class == "thumpers_kickback_or_rumbler" then
         weapon_class = weapon_template.crosshair_type == "shotgun" and "kickback_class" or "rumbler_class"
-    elseif weapon_class == "lasgun_infantry_or_helbore" then
-        weapon_class = weapon_template.crosshair_type == "bfg" and "lasgun_helbore_class" or "lasgun_infantry_class"
     elseif weapon_class == "shotguns" then
         if weapon_template.crosshair_type_special_active == "shotgun_wide" then
             weapon_class = "shotgun_lawbringer_class"
@@ -131,10 +127,6 @@ local altfire_action_kinds = {
     flamer_gas = true,
 }
 
-function string.startswith(str,start)
-    return string.sub(str, 1, string.len(start)) == start
-end
-
 mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(self)
     if is_in_hub() then
         return "none"
@@ -181,7 +173,7 @@ mod:hook_origin("HudElementCrosshair", "_get_current_crosshair_type", function(s
                     local weapon_class = determine_ranged_weapon_class(weapon_template)
                     local in_alt_fire = altfire_action_kinds[action_kind] or alternate_fire_component.is_active
 
-                    if string.startswith(weapon_class, "shotgun_") then
+                    if string.starts_with(weapon_class, "shotgun_") then
                         local inventory_comp = unit_data_extension:read_component("inventory")
                         local wielded_slot = inventory_comp.wielded_slot
                         local slot_type = slot_configuration[wielded_slot].slot_type
